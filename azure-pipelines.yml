@@ -22,7 +22,6 @@ steps:
   displayName: Build image
   inputs:
     command: Build an image
-    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-    azureContainerRegistry: $(azureContainerRegistry)
+    azureContainerRegistry: devopsbook-acr
     dockerFile: src/Services/Identity/Identity.API/Dockerfile
     imageName: $(Build.Repository.Name)
