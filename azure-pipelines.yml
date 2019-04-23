@@ -10,10 +10,19 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: This is a build for eShopOnContainers
+  displayName: 'This is a build for eShopOnContainers'
+
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+
+- task: Docker@1
+  displayName: Build image
+  inputs:
+    command: Build an image
+    azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
+    azureContainerRegistry: $(azureContainerRegistry)
+    dockerFile: src/Services/Identity/Identity.API/Dockerfile
+    imageName: $(Build.Repository.Name)
