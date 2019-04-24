@@ -15,12 +15,9 @@ steps:
   inputs:
     dockerVersion: '17.09.0-ce'
 
-- task: Docker@1
-  displayName: Build image
+- task: Docker@2
   inputs:
-    command: Build an image
-    azureContainerRegistry: devopsbook-acr
-    dockerFile: src/Services/Identity/Identity.API/Dockerfile
-    buildContext: $(Build.SourcesDirectory)
-    useDefaultContext: false
-    imageName: $(Build.Repository.Name)
+    containerRegistry: 'eefad05f-e4e8-4aba-89ca-42d81045e00f'
+    command: 'buildAndPush'
+    Dockerfile: 'src/Services/Identity/Identity.API/Dockerfile'
+    buildContext: '$(Build.SourcesDirectory)'
