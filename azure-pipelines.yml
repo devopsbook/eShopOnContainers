@@ -21,6 +21,6 @@ steps:
     command: Build an image
     azureContainerRegistry: devopsbook-acr
     dockerFile: src/Services/Identity/Identity.API/Dockerfile
-    buildContext: .
+    buildContext: $(Build.SourcesDirectory)
     useDefaultContext: false
     imageName: $(Build.Repository.Name)
